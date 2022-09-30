@@ -1,0 +1,159 @@
+/* REGISTRO */
+
+.main-form{
+    width: 100%;
+    height: 100%;
+    min-height: 530px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/images/fondo2.jpg');
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* box-shadow: 0px 0px 5px 0px rgb(67, 66, 66); */
+    opacity: 85%;
+}
+.div-form{
+    width: 95%;
+    height: 95%;
+    max-width: 300px;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(230, 230, 230, 0.698);
+    padding: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(143, 143, 143, 0.405);
+    border-radius: 10px;
+}
+.send-form{
+   padding: 5px;
+   width: 50%;
+   margin: 15px 25% 0px 25%;
+   border: none;
+   background-color: rgb(220, 32, 25);
+   color: white;
+   border-radius: 10px;
+}
+.form label{
+    font-weight: 600;
+}
+.form input{
+    border-radius: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.448);
+    padding-left: 5px;
+}
+.div-checkbox{
+    width: 90%;
+    display: flex;
+    font-size: 14px;
+    justify-content: flex-start;
+    padding-left: 5x;
+    margin-top: 8px;
+}
+.div-checkbox input{
+    margin-right: 8px;
+    margin-left: 10px;
+}
+
+.login{
+    align-items: flex-start;
+}
+
+.register-error{
+    color: red;
+    font-size: 12px;
+}
+
+
+/* PRODUCTS */
+.main-form-products{
+    width: 100%;
+    height: 100%;
+    min-height: 530px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/images/fondo.jpg');
+    background-position: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* box-shadow: 0px 0px 5px 0px rgb(67, 66, 66); */
+    opacity: 85%;
+    padding: 50px 10px 50px 10px;
+}
+
+.form-products{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(230, 230, 230, 0.698);
+    padding: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(143, 143, 143, 0.405);
+    border-radius: 10px;
+}
+.form-products label{
+    font-weight: 600;
+}
+.form-products input{
+    border: 1px solid rgba(0, 0, 0, 0.407);
+    border-radius: 5px;
+    width: 90%;
+    padding: 5px;
+}
+.select-create-products{
+    border: 1px solid rgba(0, 0, 0, 0.407);
+    border-radius: 5px;
+    width: 90%;
+    padding: 5px;
+}
+
+textarea{
+    resize: none;
+    height: 250px;
+    border: 1px solid rgba(0, 0, 0, 0.407);
+    border-radius: 5px;
+}
+
+.form-products-inputs{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.form-products-textarea{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+
+@media (min-width: 1024px) {
+    /* PRODUCTS */
+.main-form-products{
+    background-size: contain;
+}
+
+.form-products{
+    flex-direction: row;
+    width: 1000px;
+}
+
+.form-products-inputs{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.form-products-textarea{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+}

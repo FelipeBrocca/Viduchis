@@ -1,0 +1,38 @@
+
+footer {
+    font-size: 10px;
+    width: 100%;
+    height: auto;
+    padding: 10px;  
+    align-self: flex-end;
+}
+.text-footer{
+    display: flex;
+    justify-content: center;
+}
+.designer-mark{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+}
+.redes-footer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    margin: 0px;
+}
+.redes{
+    width: 50px;
+    list-style: none;
+    text-align: center;
+    color: rgb(57, 57, 57);
+}
+.icon-footer{
+    font-size: 15px;
+}
+
+@media (min-width: 768px) {
+    .text-footer{
+        justify-content: flex-start;
+    }
+}
