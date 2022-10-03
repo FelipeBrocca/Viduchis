@@ -1,10 +1,9 @@
 import React from 'react';
 import { useCategories } from '../../context/CategoriesContext';
+import AddList from './AddList';
 
 
 import Category from './Category';
-import AddButton from './AddButton';
-
 
 
 
@@ -16,11 +15,6 @@ import AddButton from './AddButton';
 
   return (
     <div className='list-categories'>
-
-        <AddButton
-          nombre='+ PRODUCTO'
-          param='/crear-producto'
-        />
 
       <form action="#" className='searchbar'>
         <input type="text"
@@ -36,10 +30,8 @@ import AddButton from './AddButton';
             key={category.name} />
            ))
         }
-          <AddButton
-          nombre='+ CATEGORIA'
-          param='/crear-categoria' />
       </ul>
+        <AddList />
     </div>
   );
 }

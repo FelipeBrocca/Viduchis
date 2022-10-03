@@ -23,14 +23,20 @@
     flex-direction: column;
     justify-content: center;
 }
+.div-form h2{
+    background-color: rgba(230, 230, 230, 0.698);
+    margin: 0;
+    border-radius: 10px 10px 0px 0px;
+}
+
 .form{
     display: flex;
     flex-direction: column;
     background-color: rgba(230, 230, 230, 0.698);
     padding: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(143, 143, 143, 0.405);
-    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px;
 }
+
 .send-form{
    padding: 5px;
    width: 50%;
@@ -83,9 +89,22 @@
     background-position: left;
     background-size: cover;
     background-repeat: no-repeat;
-    /* box-shadow: 0px 0px 5px 0px rgb(67, 66, 66); */
     opacity: 85%;
     padding: 50px 10px 50px 10px;
+}
+.div-form-products{
+    max-height: 90vh;
+    box-shadow: 0px 0px 10px 0px rgba(143, 143, 143, 0.405);
+    overflow-y: auto;
+    margin-top: 20px;
+}
+.div-form-products h2{
+    background-color: rgba(230, 230, 230, 0.698);
+    padding: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(143, 143, 143, 0.405);
+    border-radius: 10px 10px 0px 0px;
+    margin: 0;
+    text-align: center;
 }
 
 .form-products{
@@ -93,8 +112,8 @@
     flex-direction: column;
     background-color: rgba(230, 230, 230, 0.698);
     padding: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(143, 143, 143, 0.405);
-    border-radius: 10px;
+    
+    border-radius: 0px 0px 10px 10px;
 }
 .form-products label{
     font-weight: 600;
@@ -102,13 +121,13 @@
 .form-products input{
     border: 1px solid rgba(0, 0, 0, 0.407);
     border-radius: 5px;
-    width: 90%;
+    width: 100%;
     padding: 5px;
 }
 .select-create-products{
     border: 1px solid rgba(0, 0, 0, 0.407);
     border-radius: 5px;
-    width: 90%;
+    width: 100%;
     padding: 5px;
 }
 
@@ -131,6 +150,21 @@ textarea{
     flex-direction: column;
     padding: 5px;
 }
+.cancel-create{
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(185, 38, 38);
+    color: white;
+    font-size: 15px;
+ }
+ .cancel-create:hover{
+    background-color: rgb(211, 86, 86);
+ }
 
 
 @media (min-width: 1024px) {
@@ -149,6 +183,7 @@ textarea{
     display: flex;
     flex-direction: column;
     padding: 5px;
+    text-align: left;
 }
 .form-products-textarea{
     width: 50%;

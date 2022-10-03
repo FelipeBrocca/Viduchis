@@ -22,6 +22,9 @@ export const ProductsProvider = ({children}) => {
           const create = await createProductsRequests(product)
           if(create){
             alert('Producto creado')
+            setProducts([...products, create.data])
+          } else {
+            alert('Error')
           }
          }
 

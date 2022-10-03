@@ -9,8 +9,7 @@ import Contact from '../pages/Contact/Contact'
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import NotFound from '../components/NotFound/NotFound'
-import AddProduct from "../pages/AddProduct/AddProduct";
-import AddCategory from "../pages/AddCategory/AddCategory"
+import EditProduct from "../pages/EditProduct/EditProduct";
 import '../assets/css/Main.css'
 
 
@@ -25,9 +24,8 @@ function MainRoutes (){
                   <Route exact path="/contacto" element={<Contact />} />
                   <Route exact path="/registro" element={<Register/>} />
                   <Route exact path="/login" element={<Login/>} />
-                  <Route exact path="/crear-producto" element={<AddProduct/>} />
-                  <Route exact path="/crear-categoria" element={<AddCategory/>} />
-                  <Route path="*" element={<NotFound/>} /> 
+                  {/* <Route exact path="/productos/:id" element = {<EditProduct />} /> */}
+                  <Route path="*" element={<NotFound />} /> 
                </Routes>
            </main>
       )

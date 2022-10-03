@@ -23,7 +23,9 @@ export const CategoriesProvider = ({children}) => {
             if(create){
                 alert('Categoria creada')
                 setCategories([...categories, create.data])
-            } 
+            } else {
+                alert('Error')
+            }
         }
 
         useEffect(() => {

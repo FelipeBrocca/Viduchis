@@ -10,13 +10,13 @@ import '../../assets/css/Forms.css'
 
 
 
-const AddProduct = () => {
+const EditProduct = () => {
 
   const { createProduct } = useProducts();
  
   const initialValues =  {
     name: '',
-    image: {},
+    image: null,
     category: '',
     price: 0,
     description: '',
@@ -57,15 +57,14 @@ const AddProduct = () => {
           validate={validateFields}
           onSubmit={handleSubmit}
         >
-          {({ handleSubmit }) => (
+          {({ handleSubmit, setFieldValue }) => (
             <Form id='register' className="form-products">
               <div className='form-products-inputs'>
               <label htmlFor='name'>Nombre del producto</label>
               <Field type='text' name="name" autoComplete='off' />
               <ErrorMessage className='register-error' name='name' component='small' />
               <label htmlFor='image'>Imagen</label>
-              <input type='file' name="image" />
-              <ErrorMessage className='register-error' name='image' component='small' />
+              <input type='file' name="image" onChange={(e) => setFieldValue('image', e.target.files[0])} />
               <label htmlFor='price'>Precio</label>
               <Field type='number' className='type-number' name="price" min='0' autoComplete='off' />
               <ErrorMessage className='register-error' name='price' component='small' />
@@ -96,4 +95,4 @@ const AddProduct = () => {
     </div>
   )
 }
-export default AddProduct
+export default EditProduct
