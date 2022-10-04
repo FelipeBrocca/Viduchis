@@ -16,3 +16,5 @@ export const createProductsRequests = async (product) => {
         }
     })
 }
+
+export const editProductRequest = async id => await axios.get('/products/' + id);

@@ -43,7 +43,7 @@ function CardItem({nombre, image, precio, stock, description, id}) {
         <h3>{nombre}</h3>
         <span>{description}</span>
         <div className='buttons-pop'>
-        <Link to={`/productos/${id}`}><button className='boton-edit'>Editar</button></Link>
+        <Link to={`/productos/detail/${id}`}><button className='boton-edit'>Editar</button></Link>
         <button className='boton-popup' onClick={() => setTrigger(false)}>Cerrar</button>
         </div>
       </div>

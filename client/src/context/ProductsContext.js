@@ -1,5 +1,5 @@
 import { useState, createContext, useContext, useEffect } from "react";
-import { getProductsRequests, createProductsRequests } from "../api/productsAPI";
+import { getProductsRequests, createProductsRequests, editProductRequest } from "../api/productsAPI";
 
 
 const productsContext = createContext()
@@ -28,6 +28,11 @@ export const ProductsProvider = ({children}) => {
           }
          }
 
+         const getEditProduct = async (id) => {
+          const productToEdit = await editProductRequest(id)
+          return productToEdit.data;
+         }
+
          useEffect(() => {
           getProducts()
         }, [])
@@ -37,7 +42,8 @@ export const ProductsProvider = ({children}) => {
         <productsContext.Provider value={{
           products, 
           setProducts,
-          createProduct
+          createProduct,
+          getEditProduct
         }} >
           {children}
       </productsContext.Provider>
