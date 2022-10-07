@@ -35,6 +35,8 @@ function CardItem({nombre, image, precio, stock, description, id}) {
       </div>
     </div>
     <div className={trigger ? 'pop-up-open' : 'd-none'}>
+         <div className='backdrop' onClick={()=> setTrigger(false)}>
+        </div>
       <div className='pop-up-card'>
       <div className="popup-image">
         <img className='col-12' src={image.url} alt='' />

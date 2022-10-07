@@ -1,13 +1,6 @@
 import React from "react";
-// import { useCategories } from "../../context/CategoriesContext";
-// import { useProducts } from "../../context/ProductsContext";
-// import {useUsers} from '../../context/UsersContext'
 
 function HomeMain (){
-
-    // const { users } = useUsers();
-    // const {products} = useProducts();
-    // const {categories} = useCategories();
 
     return(
         

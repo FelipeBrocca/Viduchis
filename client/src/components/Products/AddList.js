@@ -12,6 +12,8 @@ function AddList() {
                 Agregar Categoria
             </div>
             <div className={catTrigger ? 'pop-up-open' : 'd-none'}>
+              <div className='backdrop' onClick={()=> setCatTrigger(false)}>
+              </div>
           <AddCategory />
           <button className='cancel-create' onClick={()=> setCatTrigger(false)}>X</button>
             </div>   

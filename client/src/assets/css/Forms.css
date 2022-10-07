@@ -22,6 +22,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 100;
 }
 .div-form h2{
     background-color: rgba(230, 230, 230, 0.698);
@@ -98,6 +99,7 @@
     box-shadow: 0px 0px 10px 0px rgba(143, 143, 143, 0.405);
     overflow-y: auto;
     margin-top: 20px;
+    z-index: 100;
 }
 .div-form-products h2{
     background-color: rgba(230, 230, 230, 0.698);
@@ -130,6 +132,10 @@
     border-radius: 5px;
     width: 100%;
     padding: 5px;
+}
+
+.preview-image {
+   width: 100px;
 }
 
 textarea{
@@ -167,6 +173,7 @@ textarea{
     background-color: rgb(185, 38, 38);
     color: white;
     font-size: 15px;
+    z-index: 110;
  }
  .cancel-create:hover{
     background-color: rgb(211, 86, 86);

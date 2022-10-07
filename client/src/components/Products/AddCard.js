@@ -18,6 +18,8 @@ function AddCard() {
       <button className='button-icon' onClick={() => setTrigger(true)}><FontAwesomeIcon className='icon-plus' icon={faPlusCircle} /></button>
     </div>
     <div className={trigger ? 'pop-up-open' : 'd-none'}>
+         <div className='backdrop' onClick={()=> setTrigger(false)}>
+          </div>
       <AddProduct />
       <button className='cancel-create' onClick={()=> setTrigger(false)}>X</button>
       </div>
