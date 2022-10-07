@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 function CardItem({nombre, image, precio, stock, description, id}) {
 
   const [trigger, setTrigger] = useState(false)
-
+  
+ 
   const [valor, setValor] = useState(0)
 
 
@@ -45,7 +46,7 @@ function CardItem({nombre, image, precio, stock, description, id}) {
         <h3>{nombre}</h3>
         <span>{description}</span>
         <div className='buttons-pop'>
-        <Link to={`/productos/detail/${id}`}><button className='boton-edit'>Editar</button></Link>
+        <Link to={`/productos/detalle/${id}`}><button className='boton-edit'>Editar</button></Link>
         <button className='boton-popup' onClick={() => setTrigger(false)}>Cerrar</button>
         </div>
       </div>

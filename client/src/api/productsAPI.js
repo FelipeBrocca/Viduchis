@@ -18,3 +18,5 @@ export const createProductsRequests = async (product) => {
 }
 
 export const editProductRequest = async id => await axios.get('/products/' + id);
+
+export const eliminateProductRequest = async (id) => await axios.delete('/products/' + id);

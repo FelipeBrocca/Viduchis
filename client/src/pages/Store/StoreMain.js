@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import{useProducts} from '../../context/ProductsContext'
+import { useParams } from 'react-router-dom';
 
 
 import CardItem from '../../components/Products/Card'
@@ -9,11 +10,14 @@ import AddCard from "../../components/Products/AddCard";
 
 
 function StoreMain() {
+ 
+    const params = useParams();
+    const {products, getProducts} = useProducts();
 
-    const {products} = useProducts();
 
-    
-
+    useEffect(() => {
+       getProducts()
+    }, [products])
 
     return (
         <>
@@ -21,6 +25,22 @@ function StoreMain() {
                 <ListCategories />
                 <div className="conteiner d-flex flex-wrap conteiner-store">
                    {
+                   params && params.category ? products?.map((product) => {
+
+                    if(product.category == params.category){
+                        return (
+                            <CardItem 
+                                nombre={product.name}
+                                image={product.image}
+                                precio={product.price}
+                                stock={product.stock}
+                                description={product.description}
+                                id={product._id}
+                                key={product._id}
+                            />
+                        ) 
+                    } 
+                   }) :
                     products?.map((product) => {                    
                       return  (
                         <CardItem

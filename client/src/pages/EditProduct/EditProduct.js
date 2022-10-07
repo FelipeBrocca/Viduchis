@@ -6,16 +6,20 @@ import { useProducts } from '../../context/ProductsContext';
 import { useCategories } from '../../context/CategoriesContext'
 
 import '../../assets/css/Forms.css'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 
 
 const EditProduct = () => {
 
+  const navigate = useNavigate()
   const params = useParams();
+  
+  const [eliminate, setEliminate] = useState(false)
 
-  const { createProduct, getEditProduct } = useProducts();
+
+  const { createProduct, getEditProduct, eliminateProduct } = useProducts();
   const {categories} = useCategories();
 
   const [initialValues, setInitialValues] = useState({
@@ -47,13 +51,22 @@ const EditProduct = () => {
   }
 
   const handleSubmit = async (values, actions) => {
-    await createProduct(values)
     actions.resetForm();
+    await createProduct(values)
   }
+  const handleDelete = async (id) => {
+    setEliminate(false)
+    navigate('/productos')
+    await eliminateProduct(id)
+  }
+
+
+ 
 
   return (
     <div className="main-form-products">
     <div className="div-edit-form-products">
+    <button className='eliminate-form' onClick={() => {setEliminate(true)}}>X</button>
       <h2>Editar producto</h2>
 
       <Formik
@@ -94,13 +107,24 @@ const EditProduct = () => {
               <label htmlFor='description'>Descripción</label>
               <Field as='textarea' name="description" autoComplete='off' />
               <ErrorMessage className='register-error' name='description' component='small' />
-              <button className='send-form' type='submit'>Crear</button>
+              <button className='send-form' type='submit'>Editar</button>
             </div>
           </Form>
         )}
-      </Formik>
+      </Formik> <div className={eliminate ? 'pop-up-open' : 'd-none'}>
+        <div className='backdrop' onClick={() => setEliminate(false)}>
+        </div>
+        <div className='pop-up-eliminate'>
+          <p>Estas seguro que quieres eliminar este producto?</p>
+          <div className='confirm-eliminate'>
+          <button className='cancel' onClick={()=> setEliminate(false)}>Cancelar</button>
+          <button className='eliminate' onClick={() => {handleDelete(params.id)}}>Eliminar</button>
+          </div>
+        </div>
+        </div>
     </div>
     </div>
+        
   )
 }
 export default EditProduct

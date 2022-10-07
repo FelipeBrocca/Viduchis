@@ -11,6 +11,7 @@ import Category from './Category';
  function ListCategories () {
 
   const {categories} = useCategories();
+  const allProducts = 'Todos los productos';
   
 
   return (
@@ -22,11 +23,16 @@ import Category from './Category';
           name="search"
           autoComplete='off' />
       </form>
+        <Category 
+        nombre={allProducts}
+        param=''
+        />
       <ul className='list-categories'>
         {
            categories?.map((category) => (
             <Category
             nombre={category.name}
+            param={category.name}
             key={category.name} />
            ))
         }

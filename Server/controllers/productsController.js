@@ -91,7 +91,6 @@ export const productsController = {
 
             if(productRemoved.image.public_id){
                 await deleteImage(productRemoved.image.public_id)
-                await fs.remove(req.files.image.tempFilePath)
             }
 
             res.status(204)

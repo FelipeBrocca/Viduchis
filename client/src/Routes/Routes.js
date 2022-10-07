@@ -24,7 +24,8 @@ function MainRoutes (){
                   <Route exact path="/contacto" element={<Contact />} />
                   <Route exact path="/registro" element={<Register/>} />
                   <Route exact path="/login" element={<Login/>} />
-                  <Route exact path="/productos/detail/:id" element = {<EditProduct />} />
+                  <Route exact path="/productos/detalle/:id" element = {<EditProduct />} />
+                  <Route exact path="/productos/:category" element = {<StoreMain />} />
                   <Route path="*" element={<NotFound />} /> 
                </Routes>
            </main>

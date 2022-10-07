@@ -38,7 +38,12 @@
     padding: 10px;
     border-radius: 0px 0px 10px 10px;
 }
-
+.buttons-edit{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    gap: 15px;
+}
 .send-form{
    padding: 5px;
    width: 50%;
@@ -47,6 +52,22 @@
    background-color: rgb(220, 32, 25);
    color: white;
    border-radius: 10px;
+}
+.eliminate-form{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+    background-color: rgb(220, 32, 25);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
 }
 .form label{
     font-weight: 600;
@@ -109,6 +130,15 @@
     margin: 0;
     text-align: center;
 }
+.div-edit-form-products{
+    position: relative;
+}
+.div-edit-form-products h2{
+    background-color: rgba(230, 230, 230, 0.698);
+    margin: 0px;
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+}
 
 .form-products{
     display: flex;
@@ -134,9 +164,6 @@
     padding: 5px;
 }
 
-.preview-image {
-   width: 100px;
-}
 
 textarea{
     resize: none;
@@ -144,10 +171,7 @@ textarea{
     border: 1px solid rgba(0, 0, 0, 0.407);
     border-radius: 5px;
 }
-.textarea{
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .form-products-inputs{
     width: 100%;
