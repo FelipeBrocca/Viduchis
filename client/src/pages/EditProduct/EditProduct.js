@@ -19,7 +19,7 @@ const EditProduct = () => {
   const [eliminate, setEliminate] = useState(false)
 
 
-  const { createProduct, getEditProduct, eliminateProduct } = useProducts();
+  const { updateProduct, getEditProduct, eliminateProduct } = useProducts();
   const {categories} = useCategories();
 
   const [initialValues, setInitialValues] = useState({
@@ -36,9 +36,11 @@ const EditProduct = () => {
       if(params.id){
         const productEdit = await getEditProduct(params.id);
         setInitialValues(productEdit);  
+        let oldPic = productEdit.image
+        console.log(oldPic);
       }
     })();
-  }, [])
+  }, [params.id])
 
 
   const validateFields = values => {
@@ -50,10 +52,11 @@ const EditProduct = () => {
     return errors;
   }
 
-  const handleSubmit = async (values, actions) => {
-    actions.resetForm();
-    await createProduct(values)
+  const handleSubmit = async (product, values) => {
+    navigate('/productos')
+    await updateProduct(params.id, values)
   }
+
   const handleDelete = async (id) => {
     setEliminate(false)
     navigate('/productos')
@@ -82,7 +85,8 @@ const EditProduct = () => {
               <Field type='text' name="name" autoComplete='off' />
               <ErrorMessage className='register-error' name='name' component='small' />
               <label htmlFor='image'>Imagen</label>
-              <input type='file' name="image" onChange={(e) => setFieldValue('image', e.target.files[0])} required />
+              <input type='file' name="image" onChange={(e) => setFieldValue('image', e.target.files[0])} />
+              <small className='register-error'>* Si no se agrega imagen, se mantendra la del producto</small>
               <label htmlFor='price'>Precio</label>
               <Field type='number' className='type-number' name="price" min='0' autoComplete='off' />
               <ErrorMessage className='register-error' name='price' component='small' />
@@ -111,7 +115,8 @@ const EditProduct = () => {
             </div>
           </Form>
         )}
-      </Formik> <div className={eliminate ? 'pop-up-open' : 'd-none'}>
+      </Formik> 
+      <div className={eliminate ? 'pop-up-open' : 'd-none'}>
         <div className='backdrop' onClick={() => setEliminate(false)}>
         </div>
         <div className='pop-up-eliminate'>

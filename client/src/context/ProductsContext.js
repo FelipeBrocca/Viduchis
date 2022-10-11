@@ -2,7 +2,8 @@ import { useState, createContext, useContext, useEffect } from "react";
 import { getProductsRequests, 
          createProductsRequests, 
          editProductRequest,
-         eliminateProductRequest } from "../api/productsAPI";
+         eliminateProductRequest, 
+         updateProductRequest} from "../api/productsAPI";
 
 
 const productsContext = createContext()
@@ -36,6 +37,10 @@ export const ProductsProvider = ({children}) => {
           return productToEdit.data;
          }
 
+         const updateProduct = async (id, product) => {
+          await updateProductRequest(id, product)
+         }
+
          const eliminateProduct = async (id) => {
           await eliminateProductRequest(id)
           setProducts(products.filter(product => product._id !== id))
@@ -53,7 +58,8 @@ export const ProductsProvider = ({children}) => {
           getProducts,
           createProduct,
           getEditProduct,
-          eliminateProduct
+          eliminateProduct,
+          updateProduct
         }} >
           {children}
       </productsContext.Provider>

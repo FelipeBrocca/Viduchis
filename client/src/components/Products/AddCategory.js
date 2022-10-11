@@ -4,9 +4,11 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import '../../assets/css/Forms.css'
 import { useCategories } from '../../context/CategoriesContext';
+import { useNavigate } from 'react-router-dom';
 
-const AddCategorie = () => {
+const AddCategory = () => {
 
+  const navigate = useNavigate()
 
   const {createCategory} = useCategories();
 
@@ -19,8 +21,10 @@ const AddCategorie = () => {
     if(!values.name) {errors.name = 'Debe ingresar un nombre para la categoría'}
     return errors
   }
-  const handleSubmit = async (values) =>{
+  const handleSubmit = async (values, actions) =>{
+      navigate('/productos')
       await createCategory(values)
+      actions.resetForm()
   }
 
   return ( 
@@ -42,4 +46,4 @@ const AddCategorie = () => {
       </div>
   )
 }
-export default AddCategorie
+export default AddCategory

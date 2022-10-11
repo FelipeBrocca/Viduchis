@@ -14,20 +14,22 @@ function StoreMain() {
     const params = useParams();
     const {products, getProducts} = useProducts();
 
-
     useEffect(() => {
-       getProducts()
-    }, [products])
+        getProducts()
+    }, [])
 
     return (
         <>
             <div className="store-main">
                 <ListCategories />
                 <div className="conteiner d-flex flex-wrap conteiner-store">
+                    <AddCard />
                    {
                    params && params.category ? products?.map((product) => {
+                    
+                    let category = product.category.toLowerCase()
 
-                    if(product.category == params.category){
+                    if(category === params.category){
                         return (
                             <CardItem 
                                 nombre={product.name}
@@ -40,7 +42,7 @@ function StoreMain() {
                             />
                         ) 
                     } 
-                   }) :
+                   }) : 
                     products?.map((product) => {                    
                       return  (
                         <CardItem
@@ -55,7 +57,6 @@ function StoreMain() {
                     )
                     })
                    }
-                   <AddCard />
                 </div>
             </div>
         </>

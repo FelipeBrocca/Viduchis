@@ -73,6 +73,17 @@ main{
    font-size: 14px;
    cursor: pointer;
 }
+.category-container{
+   width: 100%;
+   border: none;
+   color: black;
+   text-decoration: none;
+   text-align: center;
+   align-items: center;
+   position: relative;
+   max-width: 150px;
+   margin: 5px;
+}
 
 .item-category-link{
    width: 100%;
@@ -81,12 +92,32 @@ main{
    text-decoration: none;
    text-align: center;
    align-items: center;
-   margin: 5px;
    max-width: 150px;
+   position: relative;
+}
+.category-container:hover .eliminate-category{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .item-category:hover {
   background-color: rgba(241, 241, 241, 0.642);
   color: black;
+}
+.eliminate-category{
+   position: absolute;
+   top: 5px;
+   right: 5px;
+   z-index: 100;
+   border-radius: 50%;
+   width: 20px;
+   height: 20px;
+   border: none;
+   background-color: rgb(220, 32, 25);;
+   color: white;
+   font-size: 10px;
+   cursor: pointer;
+   display: none;
 }
 .addButtons{
    display: flex;
@@ -400,6 +431,9 @@ main{
       justify-content: center;
       gap: 10px;
    }
+   .category-container{
+      max-width: none;
+   }
    .item-category{
       width: 100%;
       max-width: none;
@@ -414,6 +448,9 @@ main{
       margin-left: 0px;
       margin-right: 0px;
       padding-right: 0px;
+   }
+   .cardItem{
+      min-width: 300px;
    }
 
    .pop-up-card{

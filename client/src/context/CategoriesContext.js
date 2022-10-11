@@ -1,5 +1,5 @@
 import { useState, createContext, useContext, useEffect } from "react";
-import { createCategoriesRequests, getCategoriesRequests } from "../api/categoriesAPI";
+import { createCategoriesRequests, getCategoriesRequests, eliminateCategoryRequest } from "../api/categoriesAPI";
 
 
 const categoriesContext = createContext()
@@ -28,6 +28,12 @@ export const CategoriesProvider = ({children}) => {
             }
         }
 
+        const eliminateCategory = async (id) => {
+            await eliminateCategoryRequest(id)
+            setCategories(categories.filter(category => category._id !== id))
+        }
+
+        
         useEffect(() => {
             getCategories()
         }, [])
@@ -36,7 +42,8 @@ export const CategoriesProvider = ({children}) => {
         <categoriesContext.Provider value={{
             categories, 
             setCategories,
-            createCategory
+            createCategory,
+            eliminateCategory
         }} >
           {children}
       </categoriesContext.Provider>

@@ -33,6 +33,7 @@ import Category from './Category';
             <Category
             nombre={category.name}
             param={category.name}
+            id={category._id}
             key={category.name} />
            ))
         }

@@ -19,4 +19,18 @@ export const createProductsRequests = async (product) => {
 
 export const editProductRequest = async id => await axios.get('/products/' + id);
 
+export const updateProductRequest = async (id, product) => {
+    const form = new FormData() 
+
+    for(let key in product){
+       form.append(key, product[key]) 
+    }
+
+    return await axios.put(`/products/${id}`, product, {
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
+    })
+}
+
 export const eliminateProductRequest = async (id) => await axios.delete('/products/' + id);

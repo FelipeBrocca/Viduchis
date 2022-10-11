@@ -22,19 +22,12 @@ const AddProduct = () => {
   const [initialValues, setInitialValues] = useState({
     name: '',
     category: '',
+    image: null,
     price: 0,
     description: '',
     stock: 0,
   })
-  
-  useEffect(()=> {
-    (async () => {
-      if(params.id){
-        const productEdit = await getEditProduct(params.id);
-        setInitialValues(productEdit)    
-       }
-    })();
-  }, [])
+
 
   const validateFields = values => {
     const errors = {};
@@ -70,7 +63,6 @@ const AddProduct = () => {
               <ErrorMessage className='register-error' name='name' component='small' />
               <label htmlFor='image'>Imagen</label>
               <input type='file' name="image" onChange={(e) => setFieldValue('image', e.target.files[0])} required />          
-               {/* <small className='register-error'>{imageError}</small>            */}
               <label htmlFor='price'>Precio</label>
               <Field type='number' className='type-number' name="price" min='0' autoComplete='off' />
               <ErrorMessage className='register-error' name='price' component='small' />
