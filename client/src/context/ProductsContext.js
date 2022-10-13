@@ -3,7 +3,8 @@ import { getProductsRequests,
          createProductsRequests, 
          editProductRequest,
          eliminateProductRequest, 
-         updateProductRequest} from "../api/productsAPI";
+         updateProductRequest
+        } from "../api/productsAPI";
 
 
 const productsContext = createContext()
@@ -38,7 +39,8 @@ export const ProductsProvider = ({children}) => {
          }
 
          const updateProduct = async (id, product) => {
-          await updateProductRequest(id, product)
+          const productEdited = await updateProductRequest(id, product)
+          setProducts(products.map((product) => (product._id === id ? productEdited.data : product)))
          }
 
          const eliminateProduct = async (id) => {

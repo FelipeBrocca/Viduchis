@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 
@@ -36,11 +36,10 @@ const EditProduct = () => {
       if(params.id){
         const productEdit = await getEditProduct(params.id);
         setInitialValues(productEdit);  
-        let oldPic = productEdit.image
-        console.log(oldPic);
       }
     })();
-  }, [params.id])
+  }, [params.id, getEditProduct])
+
 
 
   const validateFields = values => {
@@ -52,9 +51,9 @@ const EditProduct = () => {
     return errors;
   }
 
-  const handleSubmit = async (product, values) => {
-    navigate('/productos')
+  const handleSubmit = async (values) => {
     await updateProduct(params.id, values)
+    navigate('/productos')
   }
 
   const handleDelete = async (id) => {

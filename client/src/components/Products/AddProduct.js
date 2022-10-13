@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 
@@ -7,26 +7,22 @@ import { useCategories } from '../../context/CategoriesContext'
 
 
 import '../../assets/css/Forms.css'
-import { useParams } from 'react-router-dom';
-
 
 
 
 const AddProduct = () => {
 
-  const params = useParams();
-
-  const { createProduct, getEditProduct } = useProducts();
+  const { createProduct } = useProducts();
   const {categories} = useCategories();
 
-  const [initialValues, setInitialValues] = useState({
+  const initialValues = {
     name: '',
     category: '',
     image: null,
     price: 0,
     description: '',
     stock: 0,
-  })
+  }
 
 
   const validateFields = values => {
@@ -43,7 +39,6 @@ const AddProduct = () => {
     await createProduct(values)
     actions.resetForm();
   }
-
 
 
   return (
@@ -81,9 +76,6 @@ const AddProduct = () => {
                     </option>
                   ))
                 }
-                {/* <option value="Dulce de leche">Dulce de leche</option>
-                <option value="Bombones">Bombones</option>
-                <option value="Caramelos">Caramelos</option> */}
               </Field>
               <ErrorMessage className='register-error' name='category' component='small' />
             </div>

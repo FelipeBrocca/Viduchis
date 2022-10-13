@@ -73,18 +73,31 @@ export const productsController = {
     updateProduct: async (req, res) => {
 
         try {
-            let image;
+            const productToUpdate = await Products.findById(req.params.id)
 
             if (req.files?.image) {
-                const imagePosted = await uploadImage(req.files.image.tempFilePath)
-                image = {
-                    url: imagePosted.secure_url,
-                    public_id: imagePosted.public_id
+                await deleteImage(productToUpdate.image.public_id)
+
+                let newPic;
+                
+                const imageUpdate = await uploadImage(req.files.image.tempFilePath)
+
+                newPic = {
+                    url: imageUpdate.secure_url,
+                    public_id: imageUpdate.public_id
                 }
-                updatedProduct.image = imagePosted
+
                 await fs.remove(req.files.image.tempFilePath)
+
+                productToUpdate.image = newPic
             }
-            const updatedProduct = await Products.findByIdAndUpdate(req.params.id, req.body, {
+
+            const productUpdated = {
+                ...req.body,
+                image: productToUpdate.image
+            }
+
+            const updatedProduct = await Products.findByIdAndUpdate(req.params.id, productUpdated, {
                 new: true
             })
 
@@ -100,9 +113,8 @@ export const productsController = {
         try {
             const productRemoved = await Products.findByIdAndDelete(req.params.id);
 
-            if(productRemoved.image.public_id){
+            if (productRemoved.image.public_id) {
                 await deleteImage(productRemoved.image.public_id)
-                //delete images from public/images
             }
 
             res.status(204)
