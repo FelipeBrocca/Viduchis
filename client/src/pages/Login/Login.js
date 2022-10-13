@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 // import { useNavigation } from 'react-router-dom';
 
 import '../../assets/css/Forms.css'
+import { useUsers } from '../../context/UsersContext';
 
 const Login = () => {
+
+  const {users} = useUsers();
+  // const navigation = useNavigation();
 
   const initialValues =  {
     email: '',
@@ -15,6 +19,7 @@ const Login = () => {
   const [checked, setChecked] = useState(false)
   const [errors, setErrors] = useState({})
   const [submit, setSubmit] =useState(false)
+
 
   const validate = values => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -30,6 +35,7 @@ const Login = () => {
     return errors
   }
 
+
   const handleChange = e => {
     const {name, value} = e.target
     setLoginValues({...loginValues, [name] : value})
@@ -42,12 +48,13 @@ const Login = () => {
   const handleCheck = e => {
     setChecked(e.target.checked)
   }
+
   useEffect(() => {
     if(Object.keys(errors).length === 0 && submit){
       loginValues.remember = checked
       // console.log(loginValues);
     }
-  }, [errors])
+  }, [handleSubmit])
 
   return (
     <div className="main-form login">

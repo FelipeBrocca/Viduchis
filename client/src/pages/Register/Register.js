@@ -1,11 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {UsersProvider, useUsers} from '../../context/UsersContext'
 
 import '../../assets/css/Forms.css'
 
 
 const Register = () => {
 
+  const {users, getProfile, createUser} = useUsers()
   const navigation = useNavigate();
 
   const initialValues = {
@@ -37,7 +39,12 @@ const Register = () => {
       errors.email = 'Debe ingresar un mail'
     } else if (!regex.test(values.email)) {
       errors.email = 'Debe ingresar un mail válido'
-    };
+    }
+    users.map(user => {
+      if(user.email === formValues.email){
+         errors.email = 'Email registrado'
+      }
+    })
     if (values.password.length < 6) {
       errors.password = 'La contraseña debe tener mínimo 6 caracteres'
     };
@@ -55,7 +62,7 @@ const Register = () => {
       setFormValues({...formValues, [name] : value})
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateFields(formValues));
     setSubmit(true);
@@ -68,12 +75,15 @@ const Register = () => {
   }
   
   useEffect(() => {
-    if(Object.keys(errors).length === 0 && submit){
-      formValues.terms = checkTerms;
-      formValues.getOffers = checkOffers;
-      // console.log(formValues);
-     }
-  }, [errors])
+    (async () => {
+      if(Object.keys(errors).length === 0 && submit){
+        formValues.terms = checkTerms;
+        formValues.getOffers = checkOffers;
+        await createUser(formValues);
+        navigation('/login')
+      }
+    })();
+  }, [handleSubmit])
 
   return (
     <div className="main-form">
