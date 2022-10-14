@@ -1,4 +1,5 @@
 import { useState, createContext, useContext, useEffect } from "react";
+import bcryptjs from 'bcryptjs'
 import { getUsersRequests,
          createUserRequest,
          profileUserRequest
@@ -15,6 +16,7 @@ export const useUsers = () => {
 export const UsersProvider = ({ children }) => {
 
   const [users, setUsers] = useState([])
+  // const [userSessed, setUserSessed] = useState(false)
 
   const getUsers = async () => {
     const res = await getUsersRequests()
@@ -36,7 +38,19 @@ export const UsersProvider = ({ children }) => {
     return userProfile.data;
   }
 
-
+  // const checkUserLogged = async (admin) => {
+  //  const userInSession = await window.sessionStorage.getItem('us')
+   
+  //  if (userInSession) {
+  //   const isAdmin = await bcryptjs.compare(admin, userInSession)
+  //   console.log(userInSession);
+  //   console.log(userSessed);
+  //   console.log(isAdmin);
+  // }
+  // if (userInSession && isAdmin) {
+  //   setUserSessed(true)
+  // }
+  // } 
   useEffect(() => {
     getUsers()
   }, [])
@@ -46,7 +60,8 @@ export const UsersProvider = ({ children }) => {
       users,
       getUsers,
       createUser,
-      getProfile
+      getProfile,
+      // checkUserLogged
     }} >
       {children}
     </UsersContext.Provider>

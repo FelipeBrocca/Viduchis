@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import CardItem from '../../components/Products/Card'
 import ListCategories from "../../components/Products/ListCategories";
 import AddCard from "../../components/Products/AddCard";
+import { useUsers } from "../../context/UsersContext";
 
 
 
@@ -13,6 +14,10 @@ function StoreMain() {
  
     const params = useParams();
     const {products, getProducts} = useProducts();
+    // const {checkUserLogged, userSessed} = useUsers();
+
+    // checkUserLogged('pipebrocca@gmail.com');
+    
 
     useEffect(() => {
         getProducts()
@@ -23,7 +28,11 @@ function StoreMain() {
             <div className="store-main">
                 <ListCategories />
                 <div className="conteiner d-flex flex-wrap conteiner-store">
-                    <AddCard />
+                    {/* {
+                        userSessed ? 
+                        <AddCard />
+                        : ''
+                    } */}
                    {
                    params && params.category ? products?.map((product) => {
                     
